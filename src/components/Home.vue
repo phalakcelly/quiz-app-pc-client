@@ -7,7 +7,7 @@
         />
         <div class="card-body">
           <p class="card-text">
-            Aptitude
+           <b>Aptitude</b> 
           </p>
         </div>
       </div>
@@ -21,7 +21,7 @@
         />
         <div class="card-body">
           <p class="card-text">
-            Reasoning
+            <b>Reasoning</b> 
           </p>
         </div>
       </div>
@@ -35,7 +35,7 @@
         />
         <div class="card-body">
           <p class="card-text">
-            Technical skills
+          <b>Technical skills</b>  
           </p>
         </div>
       </div>
@@ -49,7 +49,7 @@
         />
         <div class="card-body">
           <p class="card-text">
-            Job Search
+           <b>Job Search</b> 
           </p>
         </div>
       </div>
@@ -72,5 +72,12 @@
 }
 img{
   height: 250px;
+}
+.card-body{
+  display: flex;
+  justify-content: center;
+}
+.card-text{
+  
 }
 </style>

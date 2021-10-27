@@ -303,8 +303,11 @@ export default {
   width: 100%;
   background-color: gold;
 }
+.result{
+  width: 100%;
+}
 .result_container{
-    width: 90%;
+    width: 100%;
 }
 .btn{
   margin-top: 10px;
