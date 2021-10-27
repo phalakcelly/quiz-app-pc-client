@@ -1,14 +1,14 @@
 <template>
   <div class="contain">
     <ul v-for="result in results" :key="result.id">
-      
+      <div class="result">
         <span class="email">{{ result.email }}</span>
         <span class="score">{{ result.score }}</span>
         <span v-if="result.aptitude" class="test">Aptitude</span>
         <span v-if="result.reasoning" class="test">Reasoning</span>
         <span v-if="result.technical" class="test">Technical</span>
         <span class="date">{{new Date(result.date) }}</span>
-      
+      </div>
     </ul>
   </div>
 </template>
@@ -45,9 +45,12 @@ export default {
     height: 100vh;
 }
 span{
- padding: 20px 20px 20px 20px;
+ padding: 10px 10px 10px 10px;
  border: 1px solid black;
  background-color: cornsilk;
  border-radius: 3px;
+}
+.result{
+margin-bottom: 10px;
 }
 </style>
