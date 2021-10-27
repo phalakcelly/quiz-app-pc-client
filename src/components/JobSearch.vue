@@ -71,5 +71,7 @@ export default {
 .jobs-box{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 </style>
