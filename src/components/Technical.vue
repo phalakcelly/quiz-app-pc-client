@@ -1,0 +1,286 @@
+<template>
+  <div class="parent">
+    <div class="outer">
+      <div class="inner" v-if="questiondisplay">
+        <h2 class="quesnumber">Question: {{ currentQuestion + 1 }}</h2>
+        <span style="font-size: 40px;"
+          ><strong>{{ countDown }} </strong></span
+        >
+        <div class="progress-check">
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-striped"
+              role="progressbar"
+              style="width: 30%"
+              aria-valuenow="10"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+        </div>
+
+        <div class="question">{{ questions[currentQuestion].question }}</div>
+        <div class="answers">
+          <div @click="answer_adder('a')" class="answer">
+            {{ questions[currentQuestion].options.a }}
+          </div>
+          <div @click="answer_adder('b')" class="answer">
+            {{ questions[currentQuestion].options.b }}
+          </div>
+          <div @click="answer_adder('c')" class="answer">
+            {{ questions[currentQuestion].options.c }}
+          </div>
+          <div @click="answer_adder('d')" class="answer">
+            {{ questions[currentQuestion].options.d }}
+          </div>
+        </div>
+      </div>
+      <div class="start" v-if="start">
+        <button @click="changedisplay">Start</button>
+      </div>
+      <div class="result" v-if="quizendcheck">
+        <button @click="finalResult">Result</button>
+        <div class="result_container">
+            <div>{{final_Ans.result}}</div>
+            <ul v-for="eachans in final_Ans.fulldata" :key="eachans">
+                <li>{{eachans.question}} {{eachans.answer}} {{eachans.status}}</li>
+            </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { getques, resultsubmitandcheck } from "../services//technical";
+export default {
+  data() {
+    return {
+      currentQuestion: 0,
+      questiondisplay: false,
+      start: true,
+      countDown: 5,
+      timer: null,
+      questions: [],
+      progress: 0,
+      quizendcheck: false,
+      submitted_anslist: [],
+      final_Ans:{}
+    };
+  },
+  methods: {
+    changedisplay() {
+      this.start = false;
+      this.questiondisplay = true;
+      this.countDownTimer();
+    },
+    handleAnswerClick() {
+      clearTimeout(this.timer);
+      let nextQuestion = this.currentQuestion + 1;
+      if (nextQuestion < this.questions.length) {
+        this.currentQuestion = nextQuestion;
+        this.countDown = 5;
+
+        this.countDownTimer();
+      } else {
+        this.quizendcheck = true;
+        this.start = false;
+        this.questiondisplay = false;
+      }
+    },
+    countDownTimer() {
+      if (this.countDown > 0) {
+        this.timer = setTimeout(() => {
+          this.countDown -= 1;
+          this.progress = Math.ceil((30 - this.countDown) / 30);
+          console.log(this.countDown);
+          this.countDownTimer();
+        }, 1000);
+      } else {
+        this.handleAnswerClick();
+      }
+    },
+    answer_adder(option) {
+      console.log("option", option);
+
+      if (option == "a") {
+        let ans = this.questions[this.currentQuestion].options.a;
+        let id = this.questions[this.currentQuestion].id;
+        let obj = {
+          option: {
+            given_ans: ans,
+          },
+          id: id,
+        };
+        this.submitted_anslist.push(obj);
+        clearTimeout(this.timer);
+        let nextQuestion = this.currentQuestion + 1;
+        if (nextQuestion < this.questions.length) {
+          this.currentQuestion = nextQuestion;
+          this.countDown = 5;
+
+          this.countDownTimer();
+        } else {
+          this.quizendcheck = true;
+          this.start = false;
+          this.questiondisplay = false;
+        }
+      }
+      if (option == "b") {
+        let ans = this.questions[this.currentQuestion].options.b;
+        let id = this.questions[this.currentQuestion].id;
+        let obj = {
+          option: {
+            given_ans: ans,
+          },
+          id: id,
+        };
+        this.submitted_anslist.push(obj);
+        clearTimeout(this.timer);
+        let nextQuestion = this.currentQuestion + 1;
+        if (nextQuestion < this.questions.length) {
+          this.currentQuestion = nextQuestion;
+          this.countDown = 5;
+
+          this.countDownTimer();
+        } else {
+          this.quizendcheck = true;
+          this.start = false;
+          this.questiondisplay = false;
+        }
+      }
+      if (option == "c") {
+        let ans = this.questions[this.currentQuestion].options.c;
+        let id = this.questions[this.currentQuestion].id;
+        let obj = {
+          option: {
+            given_ans: ans,
+          },
+          id: id,
+        };
+        this.submitted_anslist.push(obj);
+        clearTimeout(this.timer);
+        let nextQuestion = this.currentQuestion + 1;
+        if (nextQuestion < this.questions.length) {
+          this.currentQuestion = nextQuestion;
+          this.countDown = 5;
+
+          this.countDownTimer();
+        } else {
+          this.quizendcheck = true;
+          this.start = false;
+          this.questiondisplay = false;
+        }
+      }
+      if (option == "d") {
+        let ans = this.questions[this.currentQuestion].options.d;
+        let id = this.questions[this.currentQuestion].id;
+        let obj = {
+          option: {
+            given_ans: ans,
+          },
+          id: id,
+        };
+        this.submitted_anslist.push(obj);
+        clearTimeout(this.timer);
+        let nextQuestion = this.currentQuestion + 1;
+        if (nextQuestion < this.questions.length) {
+          this.currentQuestion = nextQuestion;
+          this.countDown = 5;
+
+          this.countDownTimer();
+        } else {
+          this.quizendcheck = true;
+          this.start = false;
+          this.questiondisplay = false;
+        }
+      }
+
+      console.log("submitted anslist", this.submitted_anslist);
+    },
+    async finalResult() {
+      console.log("Inside final result");
+      const display_result = await resultsubmitandcheck(this.submitted_anslist);
+      console.log("display_result", display_result);
+      this.final_Ans=display_result.data;
+      console.log(this.final_Ans.result);
+    },
+  },
+  async created() {
+    console.log("created");
+    try {
+      let question_bank = await getques();
+
+      this.questions = question_bank.data;
+      console.log("quesbank", question_bank);
+    } catch {
+      (err) => {
+        console.log(err);
+      };
+    }
+  },
+};
+</script>
+
+<style scoped>
+.parent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer {
+  width: 70%;
+  border: 1px solid black;
+  background-color: #f8f9fa;
+  height: 500px;
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+}
+.inner {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.question {
+  width: 80%;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 5%;
+  background-color: cornflowerblue;
+  border-radius: 3px;
+  border: 1px solid gray;
+}
+.answers {
+  margin-top: 5%;
+  width: 80%;
+  border: 1px solid black;
+  background-color: darkgrey;
+  padding: 30px 30px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px;
+}
+.answer {
+  margin-top: 10px;
+  width: 95%;
+  border: 1px solid black;
+  background-color: ghostwhite;
+  border-radius: 3px;
+  padding: 3px 3px 3px 3px;
+}
+.progress-check {
+  width: 100%;
+  background-color: gold;
+}
+.result_container{
+    width: 90%;
+}
+</style>
