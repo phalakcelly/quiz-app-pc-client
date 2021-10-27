@@ -240,10 +240,24 @@ export default {
 </script>
 
 <style scoped>
+.question-box{
+   background-color: #e3bab2;
+}
+
+.answer-box{
+  background-color: #ded1a7;
+}
+.status-box{
+  background-color: #a7daf2;
+}
 .box{
   padding: 5px 5px 5px 5px;
   border: 1px solid black;
   border-radius: 3px;
+  margin:5px 5px 5px 5px ;
+ 
+  opacity: 0.5;
+  
 }
 
 .parent {

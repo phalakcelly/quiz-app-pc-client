@@ -77,7 +77,5 @@ img{
   display: flex;
   justify-content: center;
 }
-.card-text{
-  
-}
+
 </style>
