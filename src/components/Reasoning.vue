@@ -283,18 +283,18 @@ export default {
 
 .outer {
   width: 70%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   /* background-color: #f8f9fa; */
   position: relative;
     /* max-width:978px;  */
     width: 100%;
     min-height:100%; 
-    background:rgb(240,240,240) url(https://wallpaperaccess.com/full/340434.png) repeat top center; 
+    /* background:rgb(240,240,240) url(https://wallpaperaccess.com/full/340434.png) repeat top center;  */
   height: 600px;
   margin: 5%;
   display: flex;
   justify-content: center;
-  border-radius: 3px;
+  /* border-radius: 3px; */
 }
 .inner {
   width: 90%;
