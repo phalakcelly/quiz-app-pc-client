@@ -20,7 +20,7 @@ const resultsubmitandcheck=async (submitted_result)=>{
     console.log('going to send this data',submitted_result);
 
 const accuired_result=await axios.post(
-    `http://localhost:3000/test/reasoning/result`,
+    `https://quiz-app-pc.herokuapp.com/test/reasoning/result`,
     submitted_result   
    
 )
