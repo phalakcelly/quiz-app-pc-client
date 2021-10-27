@@ -36,6 +36,16 @@
         </div>
       </div>
       <div class="start" v-if="start">
+        <div class="instructions">
+          <h3><b>Instructions</b></h3>
+          <p>This is a timed quiz with 10 questions each to be answered in 30 seconds</p>
+          <p>These questions will be randomly picked from the question bank.</p>
+          <p>You will be given the test result at the end of the quiz.</p>
+          <p>The quiz will start as soon as you click the Start button.</p>         
+
+        </div>
+        
+        
         <button class="btn btn-primary" @click="changedisplay">Start</button>
       </div>
       <div class="result" v-if="quizendcheck">
@@ -240,6 +250,10 @@ export default {
 </script>
 
 <style scoped>
+.start{
+  display: flex;
+  flex-direction: column;
+}
 .question-box{
    background-color: #e3bab2;
 }
@@ -256,7 +270,7 @@ export default {
   border-radius: 3px;
   margin:5px 5px 5px 5px ;
  
-  opacity: 0.5;
+  opacity: 0.1;
   
 }
 
