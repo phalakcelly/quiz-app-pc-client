@@ -68,7 +68,7 @@
             methods: {
                 login(){
                     this.$store.dispatch('login',this.form)
-                    .then(()=>this.$router.push({name:'none'}))
+                    .then(()=>this.$router.push({name:'Home'}))
                     .catch(error=>{
                         alert(error.message)
                     })
