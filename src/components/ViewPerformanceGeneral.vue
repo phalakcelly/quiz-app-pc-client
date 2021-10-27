@@ -49,6 +49,7 @@ span{
  border: 1px solid black;
  background-color: cornsilk;
  border-radius: 3px;
+ margin: 10px 10px 10px 10px;
 }
 .result{
 margin-bottom: 10px;
