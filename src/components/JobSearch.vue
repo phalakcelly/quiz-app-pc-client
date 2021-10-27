@@ -49,6 +49,10 @@ export default {
 </script>
 
 <style scoped>
+.card{
+  margin: 10px 10px 10px 10px;
+}
+
 .spinner{
   height:100vh;
 }
