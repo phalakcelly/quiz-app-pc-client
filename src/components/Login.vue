@@ -1,5 +1,5 @@
 <template>
-    <div class="container my-4">
+    <div class="contain">
         <div class="row">
             <div class="offset-0 offset-md-3 col-12 col-md-6">
                 <h1>Login</h1>
@@ -35,17 +35,7 @@
                         <app-spinner v-if="processing" />
                     </div>
                 </form>
-                <div class="text-muted">
-                    <div>
-                        <small><strong>NOTE</strong></small>
-                    </div>
-                    <div>
-                        <small>Admin: Email is john.doe@example.com, Password is Password123#</small>
-                    </div>
-                    <div>
-                        <small>General: Email is jane.doe@example.com, Password is Password123#</small>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -79,5 +69,8 @@
 </script>
 
 <style scoped>
+.contain{
+    height: 100vh;
+}
 
 </style>
