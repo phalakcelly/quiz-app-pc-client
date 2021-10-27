@@ -11,7 +11,7 @@
             <div
               class="progress-bar progress-bar-striped"
               role="progressbar"
-              style="width: 30%"
+              :style="width"
               aria-valuenow="10"
               aria-valuemin="0"
               aria-valuemax="100"
@@ -36,15 +36,25 @@
         </div>
       </div>
       <div class="start" v-if="start">
-        <button @click="changedisplay">Start</button>
+        <div class="instructions">
+          <h3><b>Instructions</b></h3>
+          <p>This is a timed quiz with 10 questions each to be answered in 30 seconds</p>
+          <p>These questions will be randomly picked from the question bank.</p>
+          <p>You will be given the test result at the end of the quiz.</p>
+          <p>The quiz will start as soon as you click the Start button.</p>         
+
+        </div>
+        
+        
+        <button class="btn btn-primary" @click="changedisplay">Start</button>
       </div>
       <div class="result" v-if="quizendcheck">
-        <button @click="finalResult">Result</button>
+        <button class="btn btn-primary" @click="finalResult">Result</button>
         <div class="result_container">
-            <div>{{final_Ans.result}}</div>
-            <ul v-for="eachans in final_Ans.fulldata" :key="eachans">
-                <li>{{eachans.question}} {{eachans.answer}} {{eachans.status}}</li>
-            </ul>
+            <h2>Score:- {{final_Ans.result}}</h2>
+            <div v-for="eachans in final_Ans.fulldata" :key="eachans">
+                <div class="responses" ><span class="box question-box">{{eachans.question}} </span><span class="box answer-box">{{eachans.answer}} </span><span class="box status-box">{{eachans.status}}</span></div>
+            </div>
         </div>
 
       </div>
@@ -60,14 +70,26 @@ export default {
       currentQuestion: 0,
       questiondisplay: false,
       start: true,
-      countDown: 5,
+      countDown: 30,
       timer: null,
       questions: [],
       progress: 0,
       quizendcheck: false,
       submitted_anslist: [],
-      final_Ans:{}
+      final_Ans:{},
+      width:""
     };
+  },
+  computed: {
+    email() {
+      return this.$store.state.auth.email;
+    },
+    role() {
+      return this.$store.state.auth.role;
+    },
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
+    },
   },
   methods: {
     changedisplay() {
@@ -80,7 +102,7 @@ export default {
       let nextQuestion = this.currentQuestion + 1;
       if (nextQuestion < this.questions.length) {
         this.currentQuestion = nextQuestion;
-        this.countDown = 5;
+        this.countDown = 30;
 
         this.countDownTimer();
       } else {
@@ -93,7 +115,10 @@ export default {
       if (this.countDown > 0) {
         this.timer = setTimeout(() => {
           this.countDown -= 1;
-          this.progress = Math.ceil((30 - this.countDown) / 30);
+          this.progress = Math.ceil(((30 - this.countDown) / 30)*100);
+          console.log('progress',this.progress);
+          this.width=`width: ${this.progress}%`
+          console.log(this.width);
           console.log(this.countDown);
           this.countDownTimer();
         }, 1000);
@@ -118,7 +143,7 @@ export default {
         let nextQuestion = this.currentQuestion + 1;
         if (nextQuestion < this.questions.length) {
           this.currentQuestion = nextQuestion;
-          this.countDown = 5;
+          this.countDown = 30;
 
           this.countDownTimer();
         } else {
@@ -201,7 +226,8 @@ export default {
     },
     async finalResult() {
       console.log("Inside final result");
-      const display_result = await resultsubmitandcheck(this.submitted_anslist);
+      let date =new Date();
+      const display_result = await resultsubmitandcheck({email:this.email,anslist:this.submitted_anslist,date:date});
       console.log("display_result", display_result);
       this.final_Ans=display_result.data;
       console.log(this.final_Ans.result);
@@ -224,6 +250,30 @@ export default {
 </script>
 
 <style scoped>
+.start{
+  display: flex;
+  flex-direction: column;
+}
+.question-box{
+   background-color: #e3bab2;
+}
+
+.answer-box{
+  background-color: #ded1a7;
+}
+.status-box{
+  background-color: #a7daf2;
+}
+.box{
+  padding: 5px 5px 5px 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin:5px 5px 5px 5px ;
+ 
+
+  
+}
+
 .parent {
   width: 100%;
   display: flex;
@@ -233,12 +283,18 @@ export default {
 
 .outer {
   width: 70%;
-  border: 1px solid black;
-  background-color: #f8f9fa;
-  height: 500px;
+  /* border: 1px solid black; */
+  /* background-color: #f8f9fa; */
+  /* position: relative; */
+    /* max-width:978px;  */
+    /* width: 100%; */
+    /* min-height:100%;  */
+    /* background:rgb(240,240,240) url(https://wallpaperaccess.com/full/340434.png) repeat top center;  */
+  height: 600px;
   margin: 5%;
   display: flex;
   justify-content: center;
+  /* border-radius: 3px; */
 }
 .inner {
   width: 90%;
@@ -261,7 +317,7 @@ export default {
   margin-top: 5%;
   width: 80%;
   border: 1px solid black;
-  background-color: darkgrey;
+  background-color:cornflowerblue ;
   padding: 30px 30px 30px 30px;
   display: flex;
   flex-direction: column;
@@ -280,7 +336,17 @@ export default {
   width: 100%;
   background-color: gold;
 }
+.result{
+  width: 100%;
+}
 .result_container{
-    width: 90%;
+    width: 100%;
+    padding-top: 10px;
+}
+.btn{
+  margin-top: 10px;
+}
+.responses{
+  padding-top:10px ;
 }
 </style>
