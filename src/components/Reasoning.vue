@@ -92,7 +92,7 @@ export default {
       let nextQuestion = this.currentQuestion + 1;
       if (nextQuestion < this.questions.length) {
         this.currentQuestion = nextQuestion;
-        this.countDown = 5;
+        this.countDown = 30;
 
         this.countDownTimer();
       } else {
@@ -105,7 +105,7 @@ export default {
       if (this.countDown > 0) {
         this.timer = setTimeout(() => {
           this.countDown -= 1;
-          this.progress = Math.ceil((30 - this.countDown) / 30);
+          this.progress = Math.ceil(((30 - this.countDown) / 30)*100);
           console.log('progress',this.progress);
           this.width=`width: ${this.progress}`
           console.log(this.countDown);
@@ -132,7 +132,7 @@ export default {
         let nextQuestion = this.currentQuestion + 1;
         if (nextQuestion < this.questions.length) {
           this.currentQuestion = nextQuestion;
-          this.countDown = 5;
+          this.countDown = 30;
 
           this.countDownTimer();
         } else {
