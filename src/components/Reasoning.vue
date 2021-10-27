@@ -52,9 +52,9 @@
         <button class="btn btn-primary" @click="finalResult">Result</button>
         <div class="result_container">
             <h2>Score:- {{final_Ans.result}}</h2>
-            <ul v-for="eachans in final_Ans.fulldata" :key="eachans">
+            <div v-for="eachans in final_Ans.fulldata" :key="eachans">
                 <div class="responses" ><span class="box question-box">{{eachans.question}} </span><span class="box answer-box">{{eachans.answer}} </span><span class="box status-box">{{eachans.status}}</span></div>
-            </ul>
+            </div>
         </div>
 
       </div>
