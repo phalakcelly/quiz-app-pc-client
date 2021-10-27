@@ -285,10 +285,10 @@ export default {
   width: 70%;
   /* border: 1px solid black; */
   /* background-color: #f8f9fa; */
-  position: relative;
+  /* position: relative; */
     /* max-width:978px;  */
-    width: 100%;
-    min-height:100%; 
+    /* width: 100%; */
+    /* min-height:100%;  */
     /* background:rgb(240,240,240) url(https://wallpaperaccess.com/full/340434.png) repeat top center;  */
   height: 600px;
   margin: 5%;
