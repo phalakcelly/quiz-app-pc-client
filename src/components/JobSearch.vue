@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div v-if="!nojobs" class="d-flex justify-content-center align-items-center">
+    <div v-if="!nojobs" class="spinner d-flex justify-content-center align-items-center">
       <div
         class="spinner-border spinner-border-large text-light"
         role="status"
@@ -49,6 +49,9 @@ export default {
 </script>
 
 <style scoped>
+.spinner{
+  height:100vh;
+}
 .description {
   height: 300px;
   overflow-x: hidden;
