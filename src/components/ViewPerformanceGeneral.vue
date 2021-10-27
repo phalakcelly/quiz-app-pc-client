@@ -45,7 +45,7 @@ export default {
     height: 100vh;
 }
 span{
- padding: 10px 10px 10px 10px;
+ padding: 3px 3px 3px 3px;
  border: 1px solid black;
  background-color: cornsilk;
  border-radius: 3px;
