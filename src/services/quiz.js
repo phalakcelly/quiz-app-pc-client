@@ -7,7 +7,7 @@ const getques =async () => {
     console.log('inside fxn')
 
   const res=await axios.get(
-        `http://localhost:3000`,   
+        `https://quiz-app-pc.herokuapp.com`,   
        
     )
     console.log('response in users',res);
