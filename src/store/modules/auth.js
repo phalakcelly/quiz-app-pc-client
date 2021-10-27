@@ -34,6 +34,8 @@ const auth = {
         login( { commit }, credentials ) {
             return login( credentials )
                         .then( data => {
+
+                            //Object Destructring
                             const { token, email, role } = data
         
                             localStorage.setItem( KEY_TOKEN, token );

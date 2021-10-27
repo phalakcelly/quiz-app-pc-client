@@ -60,9 +60,9 @@ const router = new Router({
     ]
 });
 
-// Global auth guard
+// Sending back to login page if not authenticated
 router.beforeEach(( to, from, next ) => {
-    // Right now, role-based authorization is NOT supported
+    
     if( to.name !== 'login'  && !store.getters.isAuthenticated ) {
         return next({
             name: 'login'
