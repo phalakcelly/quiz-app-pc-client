@@ -4,7 +4,7 @@ import { successHandler, errorHandler } from './helper';
 
 export const login = ( credentials ) => {
     return axios.post(
-                `http://localhost:3000/auth/login`,
+                `https://quiz-app-pc.herokuapp.com/auth/login`,
                 credentials,
                 {
                     headers: {

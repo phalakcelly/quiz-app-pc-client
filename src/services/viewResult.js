@@ -7,7 +7,7 @@ const viewResult = async (email)=>{
     let obj={email:email};
     console.log(obj);
     const res=await axios.post(
-        `http://localhost:3000/resultforuser`,  
+        `https://quiz-app-pc.herokuapp.com/resultforuser`,  
         obj 
        
     )
