@@ -60,7 +60,7 @@ export default {
       currentQuestion: 0,
       questiondisplay: false,
       start: true,
-      countDown: 5,
+      countDown: 30,
       timer: null,
       questions: [],
       progress: 0,
@@ -108,6 +108,7 @@ export default {
           this.progress = Math.ceil(((30 - this.countDown) / 30)*100);
           console.log('progress',this.progress);
           this.width=`width: ${this.progress}`
+          console.log(this.width);
           console.log(this.countDown);
           this.countDownTimer();
         }, 1000);
