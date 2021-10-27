@@ -17,7 +17,7 @@
     </div>
     <div v-if="!nojobs" class="d-flex justify-content-center">
       <div
-        class="spinner-border spinner-border-large text-info"
+        class="spinner-border spinner-border-large text-light"
         role="status"
       >
         <span class="sr-only">Loading...</span>
@@ -59,8 +59,8 @@ export default {
   height: 100vh;
 }
 .spinner-border-large {
-    width: 3rem;
-    height: 3rem;
+    width: 6rem;
+    height: 6rem;
 }
 .sr-only{
   font-size: 20pt;
