@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div v-if="!nojobs" class="d-flex justify-content-center">
+    <div v-if="!nojobs" class="d-flex justify-content-center align-items-center">
       <div
         class="spinner-border spinner-border-large text-light"
         role="status"
