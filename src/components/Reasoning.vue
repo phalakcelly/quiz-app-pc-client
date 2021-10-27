@@ -36,10 +36,10 @@
         </div>
       </div>
       <div class="start" v-if="start">
-        <button @click="changedisplay">Start</button>
+        <button class="btn btn-primary" @click="changedisplay">Start</button>
       </div>
       <div class="result" v-if="quizendcheck">
-        <button @click="finalResult">Result</button>
+        <button class="btn btn-primary" @click="finalResult">Result</button>
         <div class="result_container">
             <div>{{final_Ans.result}}</div>
             <ul v-for="eachans in final_Ans.fulldata" :key="eachans">
