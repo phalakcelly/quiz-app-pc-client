@@ -1,6 +1,6 @@
 <template>
   <div class="contain">
-    <div v-if="nojobs">
+    <div v-if="nojobs" class="jobs-box">
       <div v-for="job in jobs" :key="job.id">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
@@ -17,7 +17,7 @@
     </div>
     <div v-if="!nojobs" class="d-flex justify-content-center">
       <div
-        class="spinner-border spinner-border-medium text-success"
+        class="spinner-border spinner-border-large text-info"
         role="status"
       >
         <span class="sr-only">Loading...</span>
@@ -58,8 +58,15 @@ export default {
 .contain {
   height: 100vh;
 }
-.spinner-border-medium {
-  width: 1.75rem;
-  height: 1.75rem;
+.spinner-border-large {
+    width: 3rem;
+    height: 3rem;
+}
+.sr-only{
+  font-size: 20pt;
+}
+.jobs-box{
+  display: flex;
+  justify-content: space-between;
 }
 </style>
