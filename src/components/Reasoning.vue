@@ -51,9 +51,9 @@
       <div class="result" v-if="quizendcheck">
         <button class="btn btn-primary" @click="finalResult">Result</button>
         <div class="result_container">
-            <div>Answer Count :- {{final_Ans.result}}</div>
+            <h2>Score:- {{final_Ans.result}}</h2>
             <ul v-for="eachans in final_Ans.fulldata" :key="eachans">
-                <div><span class="box question-box">{{eachans.question}} </span><span class="box answer-box">{{eachans.answer}} </span><span class="box status-box">{{eachans.status}}</span></div>
+                <div class="responses" ><span class="box question-box">{{eachans.question}} </span><span class="box answer-box">{{eachans.answer}} </span><span class="box status-box">{{eachans.status}}</span></div>
             </ul>
         </div>
 
@@ -270,7 +270,7 @@ export default {
   border-radius: 3px;
   margin:5px 5px 5px 5px ;
  
-  opacity: 0.1;
+
   
 }
 
@@ -341,8 +341,12 @@ export default {
 }
 .result_container{
     width: 100%;
+    padding-top: 10px;
 }
 .btn{
   margin-top: 10px;
+}
+.responses{
+  padding-top:10px ;
 }
 </style>
