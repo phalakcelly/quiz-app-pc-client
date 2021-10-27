@@ -1,6 +1,7 @@
 <template>
   <div class="contain">
-    <div v-for="job in jobs" :key="job.id">
+   <div v-if="nojobs" >
+    <div  v-for="job in jobs" :key="job.id">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">{{ job.company_name }}</h5>
@@ -15,6 +16,17 @@
         </div>
       </div>
     </div>
+    </div>
+    <div v-if="!nojobs" class="d-flex justify-content-center">
+        <div
+            class="spinner-border spinner-border-medium text-success"
+            
+            role="status"
+        >
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    
   </div>
 </template>
 
@@ -24,11 +36,15 @@ export default {
   data() {
     return {
       jobs: [],
+      nojobs:false
     };
   },
   async created() {
     console.log("created");
     const res = await jobsearch();
+    if(res!=null){
+      this.nojobs=true;
+    }
 
     this.jobs = res.jobs;
     console.log(this.jobs);
@@ -45,5 +61,9 @@ export default {
 }
 .contain{
   height: 100vh;
+}
+.spinner-border-medium {
+    width: 1.75rem;
+    height: 1.75rem;
 }
 </style>
