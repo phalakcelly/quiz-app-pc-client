@@ -317,7 +317,7 @@ export default {
   margin-top: 5%;
   width: 80%;
   border: 1px solid black;
-  background-color: darkgrey;
+  background-color:cornflowerblue ;
   padding: 30px 30px 30px 30px;
   display: flex;
   flex-direction: column;
