@@ -251,10 +251,11 @@ export default {
   width: 70%;
   border: 1px solid black;
   background-color: #f8f9fa;
-  height: 500px;
+  height: 600px;
   margin: 5%;
   display: flex;
   justify-content: center;
+  border-radius: 3px;
 }
 .inner {
   width: 90%;
@@ -298,5 +299,8 @@ export default {
 }
 .result_container{
     width: 90%;
+}
+.btn{
+  margin-top: 10px;
 }
 </style>
