@@ -11,7 +11,7 @@
             <div
               class="progress-bar progress-bar-striped"
               role="progressbar"
-              style="width: 30%"
+              :style="width"
               aria-valuenow="10"
               aria-valuemin="0"
               aria-valuemax="100"
@@ -66,7 +66,8 @@ export default {
       progress: 0,
       quizendcheck: false,
       submitted_anslist: [],
-      final_Ans:{}
+      final_Ans:{},
+      width:""
     };
   },
   computed: {
@@ -105,6 +106,8 @@ export default {
         this.timer = setTimeout(() => {
           this.countDown -= 1;
           this.progress = Math.ceil((30 - this.countDown) / 30);
+          console.log('progress',this.progress);
+          this.width=`width: ${this.progress}`
           console.log(this.countDown);
           this.countDownTimer();
         }, 1000);
