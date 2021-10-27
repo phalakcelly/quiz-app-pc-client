@@ -107,7 +107,7 @@ export default {
           this.countDown -= 1;
           this.progress = Math.ceil(((30 - this.countDown) / 30)*100);
           console.log('progress',this.progress);
-          this.width=`width: ${this.progress}`
+          this.width=`width: ${this.progress}%`
           console.log(this.width);
           console.log(this.countDown);
           this.countDownTimer();
