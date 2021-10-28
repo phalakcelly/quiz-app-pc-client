@@ -12,14 +12,14 @@
     </div>
     <div v-if="!flipresult">
       <ul v-for="result in results" :key="result.id">
-        <li>
+        <div>
           <span>{{ result.email }}</span>
           <span>{{ result.score }}</span>
           <span v-if="result.aptitude">Aptitude</span>
           <span v-if="result.reasoning">Reasoning</span>
           <span v-if="result.technical">Technical</span>
           <span>{{ result.date }}</span>
-        </li>
+        </div>
       </ul>
       <button @click="closeresult">Close</button>
     </div>
@@ -67,5 +67,12 @@ export default {
 <style scoped>
 .contain {
   height: 100vh;
+}
+span{
+ padding: 3px 3px 3px 3px;
+ border: 1px solid black;
+ background-color: cornsilk;
+ border-radius: 3px;
+ margin: 10px 10px 10px 10px;
 }
 </style>
