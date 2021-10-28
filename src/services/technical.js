@@ -17,7 +17,7 @@ const getques =async () => {
 
 const resultsubmitandcheck=async (submitted_result)=>{
     console.log('inside rsac');
-    console.log('going to send this data',submitted_result);
+    console.log('going to send this data technical',submitted_result);
 
 const accuired_result=await axios.post(
     `https://quiz-app-pc.herokuapp.com/test/technical/result`,
