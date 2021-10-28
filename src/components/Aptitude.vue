@@ -347,6 +347,7 @@ export default {
   margin-top: 10px;
 }
 .responses{
-  padding-top:10px ;
+  padding-top:5px ;
+  margin-bottom:10px ;
 }
 </style>
