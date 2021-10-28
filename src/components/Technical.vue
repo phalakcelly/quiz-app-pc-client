@@ -227,6 +227,7 @@ export default {
     },
     async finalResult() {
       console.log("Inside final result");
+      let date =new Date();
       const display_result = await resultsubmitandcheck({email:this.email,anslist:this.submitted_anslist,date:date});
       console.log("display_result", display_result);
       this.final_Ans=display_result.data;
