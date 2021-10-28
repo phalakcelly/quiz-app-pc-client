@@ -4,7 +4,7 @@
     <div v-if="usersearchflip">
       <div v-if="flipresult">
         <ul v-for="user in users" :key="user.id">
-          <li>{{ user.email }}</li>
+          <div>{{ user.email }}</div>
           <button @click="deleteUser(user.id)">Delete Users</button>
           <button @click="viewResult(user.email)">View Performance</button>
         </ul>
