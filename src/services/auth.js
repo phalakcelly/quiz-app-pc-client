@@ -9,8 +9,7 @@ export const login = ( credentials ) => {
                 credentials,
                 {
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': localStorage.getItem( 'token' )
+                        'Content-Type': 'application/json'
                     }
                 }
             )
