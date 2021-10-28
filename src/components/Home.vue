@@ -1,5 +1,5 @@
 <template>
-  <div class="contain">
+  <div class="contain" v-if="role!=`admin`">
     <router-link class="nav-link" to="/aptitude" active-class="active" exact>
       <div class="card" style="width: 28rem;">
         <img
@@ -57,7 +57,22 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default{
+  
+  computed: {
+    email() {
+      return this.$store.state.auth.email;
+    },
+    role() {
+      return this.$store.state.auth.role;
+    },
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
+    },
+  },
+}
+</script>
 
 <style scoped>
 .contain {
