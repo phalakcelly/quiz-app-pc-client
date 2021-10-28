@@ -166,7 +166,7 @@ export default {
         let nextQuestion = this.currentQuestion + 1;
         if (nextQuestion < this.questions.length) {
           this.currentQuestion = nextQuestion;
-          this.countDown = 5;
+          this.countDown = 30;
 
           this.countDownTimer();
         } else {
@@ -189,7 +189,7 @@ export default {
         let nextQuestion = this.currentQuestion + 1;
         if (nextQuestion < this.questions.length) {
           this.currentQuestion = nextQuestion;
-          this.countDown = 5;
+          this.countDown = 30;
 
           this.countDownTimer();
         } else {
@@ -212,7 +212,7 @@ export default {
         let nextQuestion = this.currentQuestion + 1;
         if (nextQuestion < this.questions.length) {
           this.currentQuestion = nextQuestion;
-          this.countDown = 5;
+          this.countDown = 30;
 
           this.countDownTimer();
         } else {
