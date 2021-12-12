@@ -3,9 +3,20 @@
     <div class="container my-4">
       <div class="row">
         <div class="offset-0 offset-md-3 col-12 col-md-6">
-          <h1>Login</h1>
+          <h1>Create Account</h1>
           <hr />
-          <form name="form" @submit.prevent="login">
+          <form name="form" @submit.prevent="register">
+              <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="name"
+                class="form-control"
+                name="name"
+                id="name"
+                placeholder="Enter Fullname"
+                v-model="form.name"
+              />
+            </div>
             <div class="form-group">
               <label for="email">Email</label>
               <input
@@ -29,16 +40,8 @@
               />
             </div>
             <div class="form-group">
-              <button class="btn btn-primary" type="submit">Login</button>
+              <button class="btn btn-primary" type="submit">Create Account</button>
               <app-spinner v-if="processing" />
-            </div>
-            <div>
-              <br />
-              <span>Don't hava an account?</span>
-              <br />
-              <button class="btn btn-light">
-                <router-link to="/register" exact>Create Account</router-link>
-              </button>
             </div>
           </form>
         </div>
@@ -48,26 +51,41 @@
 </template>
 
 <script>
+import {registration} from '../services/register'
 export default {
-  name: "AppLogin",
+  name: "AppRegister",
   data() {
     return {
       processing: false,
       form: {
+          name: "",
         email: "",
         password: "",
+        role:"general"
       },
     };
   },
   methods: {
-    login() {
-      this.$store
-        .dispatch("login", this.form)
-        .then(() => this.$router.push({ name: "Home" }))
-        .catch((error) => {
-          alert(error.message);
-        });
-    },
+    async register(){
+
+       try{ let res=await registration(this.form);
+        if(res.status==201){
+            alert('Account Created')
+            this.email=="";
+            this.name=="";
+            this.password=="";
+            
+        }
+       }
+       catch(error){
+           alert('Username exists');
+             this.email=="";
+            this.name=="";
+            this.password=="";
+       }
+      
+
+    }
   },
 };
 </script>
@@ -77,7 +95,7 @@ export default {
   height: 100vh;
 }
 
-.btn {
-  margin-top: 20px;
+.btn{
+    margin-top: 20px;
 }
 </style>

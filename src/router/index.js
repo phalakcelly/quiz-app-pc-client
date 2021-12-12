@@ -8,6 +8,7 @@ import JobSearch from '../components/JobSearch.vue';
 import AppLogin from '../components/Login.vue'
 import UserSearch from '../components/UserSearch.vue'
 import  ViewPerformanceGeneral from '../components/ViewPerformanceGeneral.vue'
+import Register from '../components/Regitser.vue'
 import store from '../store';
 
 
@@ -19,6 +20,11 @@ const router = new Router({
             name: 'login',
             path: '/login',
             component: AppLogin
+        },
+        {
+            name: 'register',
+            path: '/register',
+            component: Register
         },
         {
             name: 'Home',
@@ -63,7 +69,7 @@ const router = new Router({
 // Sending back to login page if not authenticated
 router.beforeEach(( to, from, next ) => {
     
-    if( to.name !== 'login'  && !store.getters.isAuthenticated ) {
+    if( to.name !== 'login'  && !store.getters.isAuthenticated && to.name!=='register' ) {
         return next({
             name: 'login'
         });
