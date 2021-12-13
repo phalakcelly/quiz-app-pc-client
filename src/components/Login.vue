@@ -40,6 +40,12 @@
                 <router-link to="/register" exact>Create Account</router-link>
               </button>
             </div>
+            <br>
+            <div>
+              <div class="head">Can also login through dummy user.</div>
+              <div class="cred">dummy.user@example.com</div>
+              <div class="cred">Password@123</div>              
+            </div>
           </form>
         </div>
       </div>
@@ -79,5 +85,11 @@ export default {
 
 .btn {
   margin-top: 20px;
+}
+.head{
+  font-size: 14pt;
+}
+.cred{
+  color:crimson;
 }
 </style>
