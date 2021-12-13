@@ -79,7 +79,7 @@ export default {
         }
        }
        catch(error){
-             alert('Username exists');
+             alert('Wrong Password/Username exists');
              this.email=="";
             this.name=="";
             this.password=="";
