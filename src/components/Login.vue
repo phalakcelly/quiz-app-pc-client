@@ -34,7 +34,7 @@
             </div>
             <div>
               <br />
-              <span>Don't hava an account?</span>
+              <span>Don't have an account?</span>
               <br />
               <button class="btn btn-light">
                 <router-link to="/register" exact>Create Account</router-link>
