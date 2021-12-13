@@ -52,9 +52,21 @@
         <button class="btn btn-primary" @click="finalResult">Result</button>
         <div class="result_container">
             <h2>Score:- {{final_Ans.result}}</h2>
-            <div v-for="eachans in final_Ans.fulldata" :key="eachans">
-                <div class="responses" ><span class="box question-box">{{eachans.question}} </span><span class="box answer-box">{{eachans.answer}} </span><span class="box status-box">{{eachans.status}}</span></div>
-            </div>
+             <div class="tbl">
+            <table>
+              <tr>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Status</th>                
+              </tr>
+
+              <tr  v-for="eachans in final_Ans.fulldata" :key="eachans">
+                <td class="box question-box">{{ eachans.question }}</td>
+                <td class="box answer-box">{{ eachans.answer }}</td>                
+                <td class="box status-box"> {{ eachans.status }}</td>
+              </tr>
+            </table>
+          </div>      
         </div>
 
       </div>
@@ -274,6 +286,11 @@ export default {
 
   
 }
+.tbl{
+  display: flex;
+  width: 95%;
+  justify-content: center;
+}
 
 .parent {
   width: 100%;
@@ -349,5 +366,11 @@ export default {
 }
 .responses{
   padding-top:10px ;
+}
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 </style>

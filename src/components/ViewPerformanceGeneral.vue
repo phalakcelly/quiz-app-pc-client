@@ -1,15 +1,26 @@
 <template>
   <div class="contain">
-    <ul v-for="result in results" :key="result.id">
-      <div class="result">
-        <span class="email">{{ result.email }}</span>
-        <span class="score">{{ result.score }}</span>
-        <span v-if="result.aptitude" class="test">Aptitude</span>
-        <span v-if="result.reasoning" class="test">Reasoning</span>
-        <span v-if="result.technical" class="test">Technical</span>
-        <span class="date">{{new Date(result.date) }}</span>
-      </div>
-    </ul>
+    <br>
+    <div class="tbl">
+      <table>
+        <tr>
+          <th>Email</th>
+          <th>Score</th>
+          <th>Topic</th>
+          <th>Date</th>
+        </tr>
+
+        <tr v-for="result in results" :key="result.id">
+          <td>{{ result.email }}</td>
+          <td>{{ result.score }}</td>
+          <td v-if="result.aptitude" class="test">Aptitude</td>
+          <td v-if="result.reasoning" class="test">Reasoning</td>
+          <td v-if="result.technical" class="test">Technical</td>
+          <td>{{ new Date(result.date) }}</td>
+        </tr>
+
+      </table>
+    </div>
   </div>
 </template>
 
@@ -35,23 +46,34 @@ export default {
 
   async created() {
     const res = await viewResult(this.email);
-    this.results=res.data;
+    this.results = res.data;
   },
 };
 </script>
 
 <style scoped>
-.contain{
-    height: 100vh;
+.contain {
+  height: 100vh;
 }
-span{
- padding: 3px 3px 3px 3px;
- border: 1px solid black;
- background-color: cornsilk;
- border-radius: 3px;
- margin: 10px 10px 10px 10px;
+.tbl {
+  width: 90%;
+  display: flex;
+  justify-content: center;
 }
-.result{
-margin-bottom: 10px;
+span {
+  padding: 3px 3px 3px 3px;
+  border: 1px solid black;
+  background-color: cornsilk;
+  border-radius: 3px;
+  margin: 10px 10px 10px 10px;
+}
+/* .result {
+  margin-bottom: 10px;
+} */
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 </style>
