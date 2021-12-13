@@ -39,6 +39,7 @@
                 v-model="form.password"
               />
             </div>
+            <div>Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 numeric character, and one special character.</div>
             <div class="form-group">
               <button class="btn btn-primary" type="submit">Create Account</button>
               <app-spinner v-if="processing" />
@@ -78,7 +79,7 @@ export default {
         }
        }
        catch(error){
-           alert('Username exists');
+             alert('Username exists');
              this.email=="";
             this.name=="";
             this.password=="";
